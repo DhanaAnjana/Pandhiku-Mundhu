@@ -1,98 +1,178 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     background-color: #f8f8f8;
     margin: 0;
     padding: 0;
     display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(to bottom, #f8f8f8, #e8f5e9);
+}
+
+.hdr{
+    position: fixed; 
+  top: 0px; 
+  left: 0px; 
+  width: 1640px; 
+  height: 100px; 
+  background:seashell; 
+  border-radius: 4px; 
+  align-items: center;
+  
+}
+
+.hdr_logo{
+    position: absolute;
+    color: green;
+    display: flex;
+    margin-left: 100px;
+}
+
+.hdr_logo img{
+    width: 100px;
+    height: 100px;
+}
+
+.hdr_nav{
+    display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
+    margin-left: 400px;
+    margin-top: 10px; 
 }
 
-.reservation-container {
-    width: 400px;
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    position: relative;
+.hdr h1{
+    color: green;
+    font-size: 40px;
+    padding-top: 30px;
+    font-family: 'Berkshire Swash';
+    text-decoration: none;
 }
 
-.reservation-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.hdr_nav li, a{
+    font-family:'Times New Roman', Times, serif;
+    list-style: none;
+    margin: 15px;
+    color: black;
+    cursor: pointer;
+    padding-top: 20px;
+    font-size: 20px;
+    text-decoration: none;
 }
 
-.close-btn {
-    background: none;
-    border: none;
+.hdr_nav a:hover{
+    color:red;
+}
+
+h2 {
+    margin-top: 30px;
+    font-size: 36px;
+    color: #2c3e50;
+}
+
+form {
+    width: 100%;
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+form:hover {
+    transform: translateY(-5px);
+}
+
+input, select, button {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    color: #333;
+}
+
+input::placeholder, select::placeholder {
+    color: #888;
+    font-size: 16px;
+    font-style: italic;
+    opacity: 0.7;
+    transition: all 0.3s ease-in-out;
+}
+
+input:focus::placeholder, select:focus::placeholder {
+    opacity: 1; 
+}
+
+input:valid::placeholder, select:valid::placeholder {
+    color: #27ae60; 
+    font-style: normal; 
+}
+
+input[type="text"], select {
+    font-size: 16px;
+    color: #333; 
+}
+
+input:focus, select:focus {
+    box-shadow: 0 0 8px rgba(39, 174, 96, 0.5); 
+    border-color: #27ae60;
+}
+
+
+button {
+    background-color: #27ae60;
+    color: #fff;
+    cursor: pointer;
     font-size: 18px;
-    cursor: pointer;
-}
-
-.reservation-content {
-    margin-top: 10px;
-}
-
-label {
-    display: block;
     font-weight: bold;
-    margin-top: 10px;
+    transition: background-color 0.3s ease;
 }
 
-select, input {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+button:hover {
+    background-color: #2ecc71;
 }
 
-.date-selector, .slot-selector {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 5px;
-}
-
-.date-btn, .slot-btn {
-    padding: 8px 12px;
-    border: none;
-    background-color: #ddd;
+select {
     cursor: pointer;
-    border-radius: 5px;
 }
 
-.date-btn:hover, .slot-btn:hover {
-    background-color: orange;
-    color: white;
-}
-
-.estimate {
-    margin-top: 10px;
-    font-size: 16px;
-    font-weight: bold;
-}
-
-.reserve-btn {
+.footer {
+    position: absolute;
+    bottom: 20px;
     width: 100%;
-    padding: 10px;
-    background-color: orange;
-    border: none;
-    color: white;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
+    text-align: center;
+    font-size: 14px;
+    color: #7f8c8d;
 }
 
-.reserve-btn:hover {
-    background-color: darkorange;
+.footer a {
+    text-decoration: none;
+    color: #7f8c8d;
+}
+
+.footer a:hover {
+    color: #f39c12;
+}
+
+@media (max-width: 768px) {
+    form {
+        width: 90%;
+    }
+
+    h2 {
+        font-size: 28px;
+    }
 }
