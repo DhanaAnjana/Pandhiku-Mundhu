@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pandhiku Mundhu Reservation</title>
+    <head>
+        <link rel="icon" type="image/png" href="images/icon.png">
+    </head>
+    <link href="styles/index.css" rel="stylesheet">
+    <script src="scripts/index.js" defer></script>
+    <link href='https://fonts.googleapis.com/css?family=Berkshire Swash' rel='stylesheet'>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        form {
+            width: 50%;
+            margin: auto;
+            padding: 20px;
+            background: #f4f4f4;
+            border-radius: 8px;
+        }
+        input, select, button {
+            width: 90%;
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background: green;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <header class="hdr">
+            <div class="hdr_logo">
+                <img src="images\logo.png" alt="Pandhiku Mundhu">
+                <h1>Pandhiku Mundhu</h1>
+                <ul class="hdr_nav">
+                    <li><a href="index.html">HOME</a></li>
+                    <LI><a href="menu.html">MENU</a></LI>
+                    <li><a href="reservation.html">RESERVATION</a></li>
+                    <LI><a href='index.html#aboutus'>ABOUT US</a></LI>
+                </ul>
+            </div>
+        </header>
+    </div>
+    <h2 style="margin-top: 150px;">Restaurant Table Reservation</h2>
+    <br>
+    <form id="reservationForm">
+        <input type="text" id="name" placeholder="Your Name" required><br>
+        <input type="text" id="phone" placeholder="Phone Number" required><br>
+        <input type="date" id="date" required><br>
+        <input type="time" id="time" required><br>
+        <input type="number" id="guests" placeholder="No. of Guests" required><br>
+        <select id="preference">
+            <option value="Veg">Vegetarian</option>
+            <option value="Non-Veg">Non-Vegetarian</option>
+            <option value="Mixed">Mixed</option>
+        </select><br>
+        <button type="submit">Reserve Table</button>
+    </form>
+
+    <script>
+        document.getElementById('reservationForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const reservationData = {
+                name: document.getElementById('name').value,
+                phone: document.getElementById('phone').value,
+                date: document.getElementById('date').value,
+                time: document.getElementById('time').value,
+                guests: document.getElementById('guests').value,
+                preference: document.getElementById('preference').value
+            };
+
+            const response = await fetch('http://localhost:5000/api/reservations', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(reservationData)
+            });
+
+            if (response.ok) {
+                alert('Reservation Successful!');
+                document.getElementById('reservationForm').reset();
+            } else {
+                alert('Reservation Failed!');
+            }
+        });
+    </script>
+
+</body>
+</html>
